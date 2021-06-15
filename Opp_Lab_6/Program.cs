@@ -5,55 +5,57 @@ namespace Opp_Lab_6
     class Program
     {
 
+        static void sort(int[] arr)
+        {
+            int n = arr.Length;
 
+            // One by one move boundary of unsorted subarray
+            for (int i = 0; i < n - 1; i++)
+            {
+                // Find the minimum element in unsorted array
+                int min_idx = i;
+                for (int j = i + 1; j < n; j++)
+                    if (arr[j] < arr[min_idx])
+                        min_idx = j;
+
+                // Swap the found minimum element with the first
+                // element
+                int temp = arr[min_idx];
+                arr[min_idx] = arr[i];
+                arr[i] = temp;
+            }
+        }
+
+        // Prints the array
+        static void printArray(int[] arr)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n; ++i)
+                Console.Write(arr[i] + " ");
+            Console.WriteLine();
+        }
 
         static void Main(string[] args)
         {
             try
             {
-                Console.WriteLine("Ведіть 10 цілих чисел, після кожного числа нажимайте enter:");
-                int k = Convert.ToInt32(Console.ReadLine());
-                int q = Convert.ToInt32(Console.ReadLine());
-                int w = Convert.ToInt32(Console.ReadLine());
-                int e = Convert.ToInt32(Console.ReadLine());
-                int r = Convert.ToInt32(Console.ReadLine());
-                int t = Convert.ToInt32(Console.ReadLine());
-                int y = Convert.ToInt32(Console.ReadLine());
-                int u = Convert.ToInt32(Console.ReadLine());
-                int f = Convert.ToInt32(Console.ReadLine());
-                int o = Convert.ToInt32(Console.ReadLine());
-                int[] arr = new int[10] { k, q, w, e, r, t, y, u, f, o };
-                int n = 10;
-                Console.WriteLine();
-                Console.WriteLine("Selection sort");
-                Console.WriteLine();
-                Console.Write("Initial array is: ");
-                for (int i = 0; i < n; i++)
+                Console.WriteLine("Введiть розмiрнiсть масиву: ");
+                var n = Console.ReadLine();
+                int N = int.Parse(n);
+                int[] array = new int[N];
+                var rand = new Random();
+                for (var i = 0; i < array.Length; i++)
+                    array[i] = rand.Next(0, 101);
+                Console.Write("Згенерований масив: ");
+                foreach (var a in array)
                 {
-                    Console.Write(arr[i] + " ");
+                    Console.Write(a + " ");
                 }
-                int temp, smallest;
-                for (int i = 0; i < n - 1; i++)
-                {
-                    smallest = i;
-                    for (int j = i + 1; j < n; j++)
-                    {
-                        if (arr[j] < arr[smallest])
-                        {
-                            smallest = j;
-                        }
-                    }
-                    temp = arr[smallest];
-                    arr[smallest] = arr[i];
-                    arr[i] = temp;
-                }
-                Console.WriteLine();
-                Console.Write("Sorted array is: ");
-                for (int i = 0; i < n; i++)
-                {
-                    Console.Write(arr[i] + " ");
-                }
-                Console.WriteLine();
+                Console.Write("\n");
+                sort(array);
+                Console.Write("Сортований масив методом СocktailSort: ");
+                printArray(array);
+                Console.ReadKey();
             }
             
             catch
@@ -62,49 +64,23 @@ namespace Opp_Lab_6
                 Console.WriteLine("Ведіть знову число.");
                 Console.WriteLine();
 
-                Console.WriteLine("Ведіть 10 цілих чисел, після кожного числа нажимайте enter:");
-                int k = Convert.ToInt32(Console.ReadLine());
-                int q = Convert.ToInt32(Console.ReadLine());
-                int w = Convert.ToInt32(Console.ReadLine());
-                int e = Convert.ToInt32(Console.ReadLine());
-                int r = Convert.ToInt32(Console.ReadLine());
-                int t = Convert.ToInt32(Console.ReadLine());
-                int y = Convert.ToInt32(Console.ReadLine());
-                int u = Convert.ToInt32(Console.ReadLine());
-                int f = Convert.ToInt32(Console.ReadLine());
-                int o = Convert.ToInt32(Console.ReadLine());
-                int[] arr = new int[10] { k, q, w, e, r, t, y, u, f, o };
-                int n = 10;
-                Console.WriteLine();
-                Console.WriteLine("Selection sort");
-                Console.WriteLine();
-                Console.Write("Initial array is: ");
-                for (int i = 0; i < n; i++)
+                Console.WriteLine("Введiть розмiрнiсть масиву: ");
+                var n = Console.ReadLine();
+                int N = int.Parse(n);
+                int[] array = new int[N];
+                var rand = new Random();
+                for (var i = 0; i < array.Length; i++)
+                    array[i] = rand.Next(0, 101);
+                Console.Write("Згенерований масив: ");
+                foreach (var a in array)
                 {
-                    Console.Write(arr[i] + " ");
+                    Console.Write(a + " ");
                 }
-                int temp, smallest;
-                for (int i = 0; i < n - 1; i++)
-                {
-                    smallest = i;
-                    for (int j = i + 1; j < n; j++)
-                    {
-                        if (arr[j] < arr[smallest])
-                        {
-                            smallest = j;
-                        }
-                    }
-                    temp = arr[smallest];
-                    arr[smallest] = arr[i];
-                    arr[i] = temp;
-                }
-                Console.WriteLine();
-                Console.Write("Sorted array is: ");
-                for (int i = 0; i < n; i++)
-                {
-                    Console.Write(arr[i] + " ");
-                }
-                Console.WriteLine();
+                Console.Write("\n");
+                sort(array);
+                Console.Write("Сортований масив методом СocktailSort: ");
+                printArray(array);
+                Console.ReadKey();
             }
 
             finally
